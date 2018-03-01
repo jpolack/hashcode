@@ -45,6 +45,7 @@ describe("extendRideData", () => {
                 x: 1,
                 y: 1
             },
+            blockedUntil: 2,
             turnsLeft: 1,
             achievable: true,
             achievableWithBonus: true,
@@ -77,6 +78,7 @@ describe("extendRideData", () => {
                 x: 1,
                 y: 1
             },
+            blockedUntil: 2,
             turnsLeft: 0,
             achievable: false,
             achievableWithBonus: false,
@@ -120,7 +122,7 @@ describe("findBestRide", () => {
             }], {
                     x: 0,
                     y: 0
-                }, 0, 0)
+                }, 0, 0).id
         ).toBe(1)
 
     })

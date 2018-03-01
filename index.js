@@ -54,16 +54,15 @@ for (let i = 0; i < input.meta.cars; i++) {
     }
 }
 
-const turns = []
 for (let i = 0; i < 1; i++) {
     // for (let i = 0; i < input.meta.turns; i++) {
-    turns.push(
-        turn.do(
-            input.meta,
-            i,
-            input.rides,
-            clusters,
-            cars
-        )
+    const res = turn.do(
+        input.meta,
+        i,
+        input.rides,
+        clusters,
+        cars
     )
+
+    // console.log(JSON.stringify(res, null, 2))
 }
