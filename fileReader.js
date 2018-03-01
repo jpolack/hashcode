@@ -28,8 +28,8 @@ module.exports = function (fileName) {
                 x: ride[2] * 1,
                 y: ride[3] * 1
             },
-            startAt: ride[4],
-            finishAt: ride[5],
+            startAt: ride[4] * 1,
+            finishAt: ride[5] * 1,
         }))
     return {
         meta: meta,
