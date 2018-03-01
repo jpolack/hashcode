@@ -45,8 +45,8 @@ function createCluster(vectors, clusterSize) {
     resultCentroids = []
     for (var i = 0; i < means.centroids.length; i++) {
         resultCentroids.push({
-            x: means.centroids.centroid[i][0],
-            y: means.centroids.centroid[i][1]
+            x: means.centroids[0].centroid[0],
+            y: means.centroids[0].centroid[1]
         })
 
         errorvariance += means.centroids.error
