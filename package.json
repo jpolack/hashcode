@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jpolack/hashcode/issues"
   },
-  "homepage": "https://github.com/jpolack/hashcode#readme"
+  "homepage": "https://github.com/jpolack/hashcode#readme",
+  "dependencies": {
+    "ml-kmeans": "^3.0.0"
+  }
 }
