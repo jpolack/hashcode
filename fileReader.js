@@ -1,12 +1,32 @@
 const fs = require("fs");
+const path = require("path")
 
-const file = fs.readFileSync("./data/input.txt", { encoding: "UTF-8" });
+module.exports = function (fileName) {
+    const file = fs.readFileSync(path.join("data", fileName), { encoding: "UTF-8" });
 
-const lines = file
-    .split("\n")
-    .map(line => line.split(" "));
+    const lines = file
+        .split("\n")
+        .map(line => line.split(" "));
 
-const a = lines.slice(0, 1)
-const b = lines.splice(1, 1 + a[0])
 
-console.log(a, b);
+    const meta = {
+        rows: lines.slice(0, 1)[0][0] * 1,
+        cols: lines.slice(0, 1)[0][1] * 1,
+        cars: lines.slice(0, 1)[0][2] * 1,
+        rides: lines.slice(0, 1)[0][3] * 1,
+        bonus: lines.slice(0, 1)[0][4] * 1,
+        turns: lines.slice(0, 1)[0][5] * 1,
+    }
+
+    const rides = lines.slice(1, 1 + meta.rides)
+        .map(ride => ({
+            start: {
+                from: ride[0] * 1,
+                to: ride[1] * 1
+            }
+        }))
+    return {
+        meta: meta,
+        rides: rides,
+    }
+}
