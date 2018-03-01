@@ -21,12 +21,12 @@ module.exports = function (fileName) {
     const rides = lines.slice(1, 1 + meta.rides)
         .map(ride => ({
             start: {
-                from: ride[0] * 1,
-                to: ride[1] * 1
+                x: ride[0] * 1,
+                y: ride[1] * 1
             },
             finish: {
-                from: ride[2] * 1,
-                to: ride[3] * 1
+                x: ride[2] * 1,
+                y: ride[3] * 1
             },
             startAt: ride[4],
             finishAt: ride[5],
