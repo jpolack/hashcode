@@ -1,4 +1,5 @@
 const FileReader = require("./fileReader")
+const FileWriter = require("./fileWriter")
 const turn = require("./turn")
 const kmeans = require("./kmeans")
 
@@ -41,7 +42,8 @@ const clusters = {
     }]
 }
 
-const cars = {
+let rides = input.rides
+let cars = {
     free: {},
     used: {}
 }
@@ -54,15 +56,34 @@ for (let i = 0; i < input.meta.cars; i++) {
     }
 }
 
-for (let i = 0; i < 1; i++) {
-    // for (let i = 0; i < input.meta.turns; i++) {
+const carRides={}
+
+// for (let i = 0; i < 1; i++) {
+for (let i = 0; i < input.meta.turns; i++) {
     const res = turn.do(
         input.meta,
         i,
-        input.rides,
+        rides,
         clusters,
         cars
     )
 
-    // console.log(JSON.stringify(res, null, 2))
+    for(carId in res.cars.used){
+        if(!carRides[carId]){
+            carRides[carId] = []
+        }
+        console.log(carRides)
+        carRides[carId].push(res.cars.used[carId].ride)
+        delete res.cars.used[carId].ride
+    }
+
+    cars = res.cars
+    rides = res.rides
+
+    if (rides.length == 0){
+        return rides
+    }
 }
+console.log(carRides)
+
+// FileWriter

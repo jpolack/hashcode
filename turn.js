@@ -53,6 +53,11 @@ exports.findBestRide = function (rides, currentPos, bonus, turn) {
 }
 
 exports.do = function (meta, turn, rides, kmeans, cars) {
+    rides = rides.map((r, index)=>{
+        r.id = index
+        return r
+    })
+
     for (carId in cars.used) {
         const car = cars.used[carId]
 
@@ -71,13 +76,10 @@ exports.do = function (meta, turn, rides, kmeans, cars) {
         const bestRide = exports.findBestRide(extendedRides, car.pos, meta.bonus, turn)
 
         car.blockedUntil = bestRide.ride.blockedUntil
+        car.ride = bestRide.ride.id
         cars.used[carId] = car
         delete cars.free[carId]
         rides = rides.filter((r, index) => index != bestRide.id)
-
-
-        console.log("rides", rides)
-        console.log("cars", cars)
     }
 
     return {
