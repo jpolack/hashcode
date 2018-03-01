@@ -23,7 +23,13 @@ module.exports = function (fileName) {
             start: {
                 from: ride[0] * 1,
                 to: ride[1] * 1
-            }
+            },
+            finish: {
+                from: ride[2] * 1,
+                to: ride[3] * 1
+            },
+            startAt: ride[4],
+            finishAt: ride[5],
         }))
     return {
         meta: meta,
